@@ -44,5 +44,11 @@ public class Startup implements CommandLineRunner {
         System.out.println("Nb Species : " + nbSpecies);
 
         System.out.println("Animal qui s'appelle :"+ animalRepository.findByName("Lou").toString());
+        System.out.println("espece avec un nom qui ressemble: "+ speciesRepository.findSpeciesByCommonName("Chat").toString());
+        System.out.println("personne avec entre l'age min et max: "+ personRepository.findByAgeBetween(20,30).toString());
+        System.out.println("Personne qui ont un animal donné en parametres :"+ personRepository.findByAnimal(animalRepository.findByName("Max")).toString());
+        System.out.println("le nombre de d'animaux avec un sex feminin :"+ animalRepository.findBysex('F'));
+        System.out.println("le nombre d'animaux fournit :"+animalRepository.belongsToSomeone(animalRepository.findByName("Max")));
+
     }
 }

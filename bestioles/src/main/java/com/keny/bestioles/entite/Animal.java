@@ -2,7 +2,9 @@ package com.keny.bestioles.entite;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "animal")
@@ -20,6 +22,14 @@ public class Animal {
     @ManyToOne
     @JoinColumn(name="species_id")
     private Species species;
+    @ManyToMany
+    @JoinTable(
+            name = "person_animals",
+            joinColumns = @JoinColumn(name = "animals_id"),
+            inverseJoinColumns = @JoinColumn(name = "person_id")
+    )
+    private Set<Person> person= new HashSet<>();
+
 
     public Animal() {}
 
@@ -61,6 +71,14 @@ public class Animal {
 
     public void setSpeciesId(Species species) {
         this.species = species;
+    }
+
+    public Set<Person> getPerson() {
+        return person;
+    }
+
+    public void setPerson(Set<Person> person) {
+        this.person = person;
     }
 
     @Override

@@ -13,6 +13,8 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private Integer age;
+
     private String firstName;
     private String lastName;
     private String login;
@@ -22,6 +24,10 @@ public class Person {
 
     @ManyToMany(mappedBy = "personnes")
     private Set<Role> roles = new HashSet<>();
+
+   @ManyToMany(mappedBy = "person")
+   private Set<Animal> animals = new HashSet<>();
+
 
 
 
@@ -34,6 +40,22 @@ public class Person {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public String getFirstName() {
@@ -74,5 +96,26 @@ public class Person {
 
     public void setActive(String active) {
         this.active = active;
+    }
+
+    public Set<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(Set<Animal> animals) {
+        this.animals = animals;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "lastName='" + lastName + '\'' +
+                ", active='" + active + '\'' +
+                ", mdp='" + mdp + '\'' +
+                ", login='" + login + '\'' +
+                ", age=" + age +
+                ", id=" + id +
+                ", firstName='" + firstName + '\'' +
+                '}';
     }
 }
