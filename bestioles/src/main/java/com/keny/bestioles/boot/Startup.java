@@ -43,5 +43,6 @@ public class Startup implements CommandLineRunner {
         System.out.println("Nb roles : " + nbRoles);
         System.out.println("Nb Species : " + nbSpecies);
 
+        System.out.println("Animal qui s'appelle :"+ animalRepository.findByName("Lou").toString());
     }
 }

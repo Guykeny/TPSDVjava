@@ -11,8 +11,8 @@ import java.util.Set;
 public interface PersonRepository extends JpaRepository<Person, Integer> {
 
     Set<Person> findByFirstNameOrLastName(String firstName,String lastName);
-    Set<Person> findByAgeGreaterThan(int age);
-    Set<Person> findByAgeLessThan(int age);
+   // Set<Person> findByAgeGreaterThan(int age);
+   // Set<Person> findByAgeLessThan(int age);
     Set<Person> findByLastName(String lastName);
     Optional<Person> findByid(Long id);
 }

@@ -13,7 +13,7 @@ import java.util.Set;
 public interface AnimalRepository extends JpaRepository<Animal, Integer> {
 
 
-    Set<Animal> findByName(String name);
+    Animal findByName(String name);
     Set<Animal> findBySpecies(Species species);
 
     Set<Animal> findByColorIn(Collection<String> colors);
