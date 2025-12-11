@@ -7,6 +7,7 @@ import com.keny.bestioles.repository.SpeciesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class Startup implements CommandLineRunner {
@@ -23,7 +24,7 @@ public class Startup implements CommandLineRunner {
         this.roleRepository = roleRepository;
         this.speciesRepository = speciesRepository;
     }
-
+    @Transactional
     @Override
     public void run(String... args) throws Exception {
 
@@ -49,6 +50,13 @@ public class Startup implements CommandLineRunner {
         System.out.println("Personne qui ont un animal donné en parametres :"+ personRepository.findByAnimal(animalRepository.findByName("Max")).toString());
         System.out.println("le nombre de d'animaux avec un sex feminin :"+ animalRepository.findBysex('F'));
         System.out.println("le nombre d'animaux fournit :"+animalRepository.belongsToSomeone(animalRepository.findByName("Max")));
+        personRepository.supprimerPersonsSansAnimaux();
+        System.out.println("Person qui ne contient pas d'animal :");
+
+        personRepository.genereEntite(5);
+
+
+
 
     }
 }
