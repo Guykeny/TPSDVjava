@@ -9,7 +9,11 @@ import java.util.Set;
 @Repository
 public interface SpeciesRepository extends JpaRepository<Species, Integer> {
 
+
     Set<Species> findByCommonName(String commonName);
+    Species findFirstByCommonName(String commonName);
+
+    Set<Species> findByLatinNameContainsIgnoreCase(String latinName);
 
     Set<Species> findByLatinName(String latinName);
 
