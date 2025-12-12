@@ -4,14 +4,17 @@ import com.keny.bestioles.entite.Species;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 import java.util.Set;
 
-@Repository
+@RepositoryRestResource(path = "les-betes", collectionResourceRel = "les-gens")
+//
 public interface SpeciesRepository extends JpaRepository<Species, Integer> {
 
-
+    @RestResource(exported = false)
     @Query("select  s from Species s order by s.commonName ASC ")
     Set<Species> findAllSpeciesOrderByCommonNameAsc();
 

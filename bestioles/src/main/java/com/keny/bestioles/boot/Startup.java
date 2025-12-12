@@ -53,7 +53,7 @@ public class Startup implements CommandLineRunner {
         personRepository.supprimerPersonsSansAnimaux();
         System.out.println("Person qui ne contient pas d'animal :");
 
-        personRepository.genereEntite(5);
+        //personRepository.genereEntite(5);
 
 
 
